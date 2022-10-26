@@ -9,7 +9,7 @@ from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 
 app = Dash(__name__, title="Find My Coordinates", 
-            external_stylesheets=[dbc.themes.CERULEAN],
+            external_stylesheets=[dbc.themes.SOLAR],
             meta_tags=[{'name': 'viewport',
                             'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
 
@@ -25,7 +25,7 @@ SIDEBAR_STYLE = {
     'bottom': 0,
     'width': '20%',
     'padding': '20px 10px',
-    'background-color': '#f8f9fa'
+
 }
 
 # the style arguments for the main content page.
@@ -37,7 +37,7 @@ CONTENT_STYLE = {
 
 TEXT_STYLE = {
     'textAlign': 'center',
-    'color': '#191970'
+
 }
 
 CARD_TEXT_STYLE = {
@@ -107,7 +107,6 @@ controls = dbc.Form(
 
 sidebar = html.Div(
     [
-        html.H2('Painel de controle', style=TEXT_STYLE),
         html.Hr(),
         controls
     ],
@@ -159,9 +158,13 @@ content_second_row = dbc.Row(
         dash_table.DataTable(
             id='memory-table',
                 style_data={
-        'whiteSpace': 'normal',
-        'height': 'auto',
-        'width': 'auto'},
+			'whiteSpace': 'normal',
+			'height': 'auto',
+			'width': 'auto',
+			#'backgroundColor':"#99a89d",
+			'color': 'black',
+			'weight':'bold'},
+		style_header=dict(backgroundColor="black"),
         columns=[{'name': i, 'id': i} for i in df.columns]
         ),
         md=6
@@ -186,7 +189,6 @@ content = html.Div(
 
                 ],
                 style = {'height' : '30 cm',
-                        'background-color' : '#e0e0eb',
                         'border-radius': 10}
                 ),  
         html.Hr(),
