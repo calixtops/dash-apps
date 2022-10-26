@@ -1,4 +1,4 @@
-#  Dashboard - National Oceanographic Database
+#  Find my Address App
 
 Application to find the coordinates of a given address.
 
