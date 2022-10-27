@@ -4,7 +4,7 @@ import numpy as np
 import dash_bootstrap_components as dbc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 app = Dash(__name__, title="Web Search", 
             external_stylesheets=[dbc.themes.QUARTZ],
@@ -230,10 +230,11 @@ def check_adress(n_clicks, site, link, search):
     try:
 
         if n_clicks>0:
+            
 
+            driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
             options = webdriver.ChromeOptions()
             options.add_argument("--headless")
-            driver = webdriver.Chrome(chrome_options=options)
 
             driver.get(str(site))
 
