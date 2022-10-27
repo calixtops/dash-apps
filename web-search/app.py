@@ -60,27 +60,31 @@ controls = dbc.Form(
         html.Br(),
 
         html.P('Digite o endereço do site:'),
-        html.P('ex: http://pedea.sema.ce.gov.br/portal/'),
-
+        
         dcc.Input(id='site',
         placeholder='Endereço web',
         ),
 
-        html.P('Em qual classe está o link?'),
-        html.P('ex: MetaLink'),
+        html.P('ex: http://pedea.sema.ce.gov.br/portal/',style = {'padding-top': '-15px'}),
 
+
+
+        html.P('Em qual classe está o link?'),
+    
         dcc.Input(id='link',
         placeholder='ClassName',
         ),
+        html.P('ex: MetaLink',style = {'padding-top': '-15px'}),
+
 
         html.P('Qual palavra buscar?'),
-        html.P('ex: HTTP Status 404'),
-
         dcc.Input(id='search',
         placeholder='Busca',
         ),
+        html.P('ex: HTTP Status 404',style = {'padding-top': '-15px'}),
 
-        html.Div([
+
+        html.Center([
         dbc.Button(
             id='submit_button',
             n_clicks=0,
@@ -185,7 +189,7 @@ content = html.Div(
 
 
                 html.Div([
-                        html.H2('Encontrar string dentro de links de um site'),
+                        html.H2('WebSearch - Encontre uma string dentro de links de um site'),
 
                     ],
                     style = {'padding-top' : '1%',
