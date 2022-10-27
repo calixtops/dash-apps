@@ -25,11 +25,6 @@ SIDEBAR_STYLE = {
     'bottom': 0,
     'width': '20%',
     'padding': '20px 10px',
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 70a32249f1e7f69ce8dd339c8cf16b2d2baf2cbc
 }
 
 # the style arguments for the main content page.
@@ -115,12 +110,9 @@ controls = dbc.Form(
 
 sidebar = html.Div(
     [
-<<<<<<< HEAD
         html.Br(),
         html.Br(),
         html.Br(),
-=======
->>>>>>> 70a32249f1e7f69ce8dd339c8cf16b2d2baf2cbc
         html.Hr(),
 
         controls
