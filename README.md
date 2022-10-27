@@ -41,7 +41,7 @@ Application to find the coordinates of a given address.
 
 The app was deployed on Render and can be viewed at the address below:
 
-https://app-find-address.onrender.com/
+[https://find-my-address.onrender.com/](https://find-my-address.onrender.com)
 
 
 ## App3 - dash-ml-case1
@@ -53,4 +53,4 @@ The table can be manipulated by the user and below it a bar graph is available r
 
 The app was deployed on Render and can be viewed at the address below:
 
-https://app-find-address.onrender.com/
+[https://dash-ml-case1.onrender.com](https://dash-ml-case1.onrender.com)

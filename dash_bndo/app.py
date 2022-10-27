@@ -141,8 +141,8 @@ content_first_row = dbc.Row([
 
                 dbc.CardBody(
                     [
-                        html.P('Para ocultar as comissões que aparecem no mapa, clique no nome da comissão que aparece na legenda da figura.' 
-                                'Para voltar a visualizar no mapa, basta clicar no nome novamente.', style=CARD_TEXT_STYLE),
+                        html.P('Para ocultar as comissões que aparecem no mapa, clique no nome do projeto que aparece na legenda da figura.' 
+                                ' Para voltar a visualizar no mapa, basta clicar no nome novamente.', style=CARD_TEXT_STYLE),
                     ]
                 )
             ]
@@ -155,7 +155,7 @@ content_first_row = dbc.Row([
 
                 dbc.CardBody(
                     [
-                        html.P('Para visualizar somente uma comissão, dê dois clicks no nome da Comissão.', style=CARD_TEXT_STYLE),
+                        html.P('Para visualizar somente uma comissão, dê dois clicks no nome do projeto.', style=CARD_TEXT_STYLE),
                     ]
                 ),
             ]
