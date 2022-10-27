@@ -26,6 +26,7 @@ SIDEBAR_STYLE = {
     'width': '20%',
     'padding': '20px 10px',
 
+
 }
 
 # the style arguments for the main content page.
@@ -59,8 +60,10 @@ df = pd.DataFrame({'Endereço':[],'Latitude':[],'Longitude': []})
 controls = dbc.Form(
     [
 
-        html.H4('Digite o endereço que você quer localizar:', style={
-            'textAlign': 'center'
+
+        html.H4('Digite o endereço que você quer localizar:', 
+            style={'textAlign': 'center',
+                   'color':'white'
         }),
         html.Br(),
 
@@ -102,12 +105,18 @@ controls = dbc.Form(
         ),
         
 
-    ]
+    ],style={'border':'2px #f8f9fa solid',
+            'border-radius': 10,
+            'padding' : '10%'}
 )
 
 sidebar = html.Div(
     [
+        html.Br(),
+        html.Br(),
+        html.Br(),
         html.Hr(),
+
         controls
     ],
     style=SIDEBAR_STYLE,
@@ -183,7 +192,8 @@ content = html.Div(
 
                     ],
                     style = {'padding-top' : '1%',
-                            'textAlign': 'center'}
+                            'textAlign': 'center',
+                            'color':'white'}
                 ),
 
 
