@@ -9,10 +9,10 @@ set -o errexit
 # echo $PWD
 # echo "----------"
 # echo "...Downloading Chrome"
-# mkdir -p $STORAGE_DIR/chrome
+mkdir -p /chrome
 # cd $STORAGE_DIR/chrome
 wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
+dpkg -x ./google-chrome-stable_current_amd64.deb /chrome
 rm ./google-chrome-stable_current_amd64.deb
 echo "Pasta base"
 echo $PWD
