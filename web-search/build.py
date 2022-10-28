@@ -1,2 +1,2 @@
 import subprocess
-subprocess.call(['sh','./render-build.sh'])
+subprocess.call(['sh','./render-build2.sh'])
