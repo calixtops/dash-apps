@@ -3,5 +3,4 @@ dash_bootstrap_components==1.2.1
 numpy==1.21.6
 pandas
 selenium==4.5.0
-google-api-python-client
-chromedriver-binary==77.0.3865.40.0
+gunicorn
