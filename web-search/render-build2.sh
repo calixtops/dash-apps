@@ -3,7 +3,6 @@
 set -o errexit
 
 
-
 STORAGE_DIR=/opt/render/project/.render
 
 if [[ ! -d $STORAGE_DIR/chrome ]]; then
