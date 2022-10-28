@@ -4,8 +4,9 @@ import numpy as np
 import dash_bootstrap_components as dbc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import chromedriver_autoinstaller
 
-
+chromedriver_autoinstaller.install()
 
 app = Dash(__name__, title="Web Search", 
             external_stylesheets=[dbc.themes.QUARTZ],
