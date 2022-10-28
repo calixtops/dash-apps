@@ -14,4 +14,4 @@ rm ./google-chrome-stable_current_amd64.deb
 
 cd /opt/render/project/src/ # Make sure we return to where we were
 
-/opt/render/project/src/.venv/bin/python -m pip install -r /opt/render/project/src/requirements.txt	
+/opt/render/project/src/.venv/bin/python -m pip install -r /opt/render/project/requirements.txt	
