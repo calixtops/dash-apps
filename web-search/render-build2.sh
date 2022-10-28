@@ -2,6 +2,6 @@
 # exit on error
 set -o errexit
 
-apt install chromium-chromedriver
+sudo apt install chromium-chromedriver
 pip install -r requirements.txt	
 
