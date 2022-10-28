@@ -7,4 +7,4 @@ google-api-python-client
 chromedriver-binary==77.0.3865.40.0
 gunicorn
 chromedriver_autoinstaller
-
+webdriver_manager
