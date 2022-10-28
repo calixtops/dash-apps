@@ -3,8 +3,11 @@
 set -o errexit
 
 
-STORAGE_DIR=/opt/render/project/.render
 
+STORAGE_DIR=/opt/render/project/.render
+echo "Pasta base"
+echo $PWD
+echo "----------"
 echo "...Downloading Chrome"
 mkdir -p $STORAGE_DIR/chrome
 cd $STORAGE_DIR/chrome
