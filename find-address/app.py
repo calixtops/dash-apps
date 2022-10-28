@@ -9,7 +9,7 @@ from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 
 app = Dash(__name__, title="Find My Coordinates", 
-            external_stylesheets=[dbc.themes.SOLAR],
+            external_stylesheets=[dbc.themes.SLATE],
             meta_tags=[{'name': 'viewport',
                             'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
 
@@ -66,24 +66,24 @@ controls = dbc.Form(
         html.Br(),
 
 
-        html.Div(
+        html.Center(
             [
                 dcc.Input(id='adress',
                 placeholder='Digite um endereço...',
                 ),
+                html.P('Ex: Cidade Universitaria, São Paulo'),
     
     
-                html.Br(),
-                dbc.Button(
+                html.Center([dbc.Button(
                     id='submit_button',
                     n_clicks=0,
                     children='Fazer busca',
                     color='primary',
                 ),
-
+                ],style = {'padding-top' : '10%'}),
             ],
 
-            style=dict(display='inline-grid', justifyContent='center', width = '90%')),
+            ),
 
 
 
@@ -95,7 +95,8 @@ controls = dbc.Form(
 
                 dbc.CardBody(
                     [
-                        html.P('Desenvolvedor: Pedro Silveira Calixto',
+                        html.P('Desenvolvedor: '
+                                'Pedro Silveira',
                                  style=CARD_TEXT_STYLE),
                     ]
                 )
@@ -171,7 +172,7 @@ content_second_row = dbc.Row(
 			#'backgroundColor':"#99a89d",
 			'color': 'black',
 			'weight':'bold'},
-		style_header=dict(backgroundColor="black"),
+		style_header=dict(backgroundColor="black",weight = 'bold'),
         columns=[{'name': i, 'id': i} for i in df.columns]
         ),
         md=6
@@ -222,9 +223,6 @@ app.layout = html.Div([sidebar, content])
     [State('adress','value')]
     )
 def check_adress(n_clicks, adress):
-
-    print(adress)
-
 
     geolocator = Nominatim(user_agent="MyApp")
     location = geolocator.geocode(adress)
