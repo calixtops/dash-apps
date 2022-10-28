@@ -232,7 +232,7 @@ def check_adress(n_clicks, site, link, search):
 
             options = webdriver.ChromeOptions()
             options.add_argument("--headless")
-            driver = webdriver.Chrome('/opt/google/chrome/chrome',chrome_options = options)
+            driver = webdriver.Chrome(chrome_options = options)
 
             driver.get(str(site))
 

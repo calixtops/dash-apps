@@ -230,10 +230,12 @@ def check_adress(n_clicks, site, link, search):
 
         if n_clicks>0:
 
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            driver = webdriver.Chrome(chrome_options = options)
-
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            chrome_options.add_argument("--no-sandbox")
+            # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+            driver = webdriver.Chrome(chrome_options=chrome_options)
             driver.get(str(site))
 
             elements = driver.find_elements(By.CLASS_NAME, str(link))
