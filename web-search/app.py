@@ -234,8 +234,8 @@ def check_adress(n_clicks, site, link, search):
 
             options = webdriver.ChromeOptions()
             options.add_argument("--headless")
-            driver = webdriver.Chrome(executable_path='/opt/render/project/.render/chrome/opt/google/chrome/', chrome_options = options)
-
+            driver = webdriver.Chrome(executable_path='/opt/render/project/.render/chrome/opt/google/chrome/chrome', chrome_options = options)
+            
             driver.get(str(site))
 
             elements = driver.find_elements(By.CLASS_NAME, str(link))

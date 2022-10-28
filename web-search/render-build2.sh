@@ -27,7 +27,9 @@ echo "----------"
 pip install -r /opt/render/project/src/web-search/requirements.txt	
 
 
-
+echo "Checando chrome folder"
+echo $(ls /opt/render/project/.render/chrome/opt/google/chrome)
+echo "----------"
 
 
 
