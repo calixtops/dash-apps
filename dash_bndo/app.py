@@ -100,12 +100,12 @@ controls = dbc.Form(
                      ),
 
         html.Br(),
-        dbc.Button(
+        html.Center(dbc.Button(
             id='submit_button',
             n_clicks=0,
             children='Submit',
             color='primary',
-        ),
+        )),
 
         html.Br(),
         html.Br(),
