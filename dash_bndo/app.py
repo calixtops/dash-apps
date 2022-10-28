@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 
 
-app = Dash(__name__, title="Dados BNDO", external_stylesheets=[dbc.themes.CERULEAN])
+app = Dash(__name__, title="Dados BNDO", external_stylesheets=[dbc.themes.MORPH])
 
 server = app.server
 
@@ -39,12 +39,13 @@ hv_data_cur = ['Data-Hora', 'Projeto', 'Profundidade [m]','Velocidade de corrent
 # the style arguments for the sidebar.
 SIDEBAR_STYLE = {
     'position': 'fixed',
-    'top': 0,
+    'top': 20,
     'left': 0,
-    'bottom': 0,
     'width': '20%',
     'padding': '20px 10px',
-    'background-color': '#f8f9fa'
+    'background-color': '#f8f9fa',
+    'border':'2px #f8f9fa solid',
+    'border-radius': 10,
 }
 
 # the style arguments for the main content page.
@@ -108,7 +109,7 @@ controls = dbc.Form(
 
         html.Br(),
         html.Br(),
-        html.Hr(),
+        html.Hr(style = {'color':'black'}),
         dbc.Card(
             [
 
@@ -128,7 +129,7 @@ controls = dbc.Form(
 sidebar = html.Div(
     [
         html.H2('Painel de controle', style=TEXT_STYLE),
-        html.Hr(),
+        html.Hr(style = {'color':'black'}),
         controls
     ],
     style=SIDEBAR_STYLE,
@@ -230,15 +231,15 @@ content = html.Div(
 
 
                 ],
-                style = {'height' : '10%',
-                        'background-color' : '#e0e0eb',
+                style = {'height' : '10',
+                        'background-color' : '#f8f9fa',
                         'border-radius': 10}
                 ),  
-        html.Hr(),
+        html.Hr(style = {'color':'black'}),
         content_first_row,
-        html.Hr(),
+        html.Hr(style = {'color':'black'}),
         content_second_row,
-        html.Hr(),
+        html.Hr(style = {'color':'black'}),
         content_third_row,
         # content_fourth_row
     ],
