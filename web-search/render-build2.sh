@@ -16,13 +16,18 @@ dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
 rm ./google-chrome-stable_current_amd64.deb
 echo "Pasta base"
 echo $PWD
-echo $LS
 echo "----------"
 
 
 cd /opt/render/project/src/web-search # Make sure we return to where we were
-
-/opt/render/project/src/.venv/bin/python -m pip install -r /opt/render/project/src/web-search/requirements.txt	
-
-
+echo "Pasta Final"
+echo $PWD
 echo $(ls)
+echo "----------"
+pip install -r /opt/render/project/src/web-search/requirements.txt	
+
+
+
+
+
+
