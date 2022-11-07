@@ -64,6 +64,7 @@ controls = dbc.Form(
         
         dcc.Input(id='site',
         placeholder='Endereço web',
+        className = 'form-control'
         ),
 
         html.P('ex: http://pedea.sema.ce.gov.br/portal/',style = {'padding-top': '-15px'}),
@@ -74,6 +75,7 @@ controls = dbc.Form(
     
         dcc.Input(id='link',
         placeholder='ClassName',
+        className = 'form-control'
         ),
         html.P('ex: MetaLink',style = {'padding-top': '-15px'}),
 
@@ -81,6 +83,7 @@ controls = dbc.Form(
         html.P('Qual palavra buscar?'),
         dcc.Input(id='search',
         placeholder='Busca',
+        className = 'form-control'
         ),
         html.P('ex: HTTP Status 404',style = {'padding-top': '-15px'}),
 
@@ -235,7 +238,7 @@ def check_adress(n_clicks, site, link, search):
             options = webdriver.ChromeOptions()
             options.add_argument("--headless")
 
-            driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options = options)
+            driver = webdriver.Chrome(chrome_options = options)
             
             driver.get(str(site))
 

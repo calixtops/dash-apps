@@ -7,7 +7,7 @@ from dash import Dash, dash_table, dcc, html, Input, Output
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = Dash(__name__, title="Dashboard Geofusion", external_stylesheets=external_stylesheets)
+app = Dash(__name__, title="", external_stylesheets=external_stylesheets)
 
 server = app.server
 
