@@ -81,7 +81,7 @@ controls = dbc.Form(
                     children='Fazer busca',
                     color='primary',
                 ),
-                ],style = {'padding-top' : '10%'}),
+                ],style = {'padding' : '10%'}),
             ],
 
             ),
