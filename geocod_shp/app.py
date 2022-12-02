@@ -16,6 +16,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
+server = app.server
 
 
 
@@ -56,7 +57,6 @@ def geocod_add(geo_df):
 
                         city = address.get('village')
 
-        print(city)
         a.append(city)
         if city == None:
             b.append(99999)
@@ -125,8 +125,6 @@ app.layout = html.Div(
     prevent_initial_call=True,
 )
 def display_files(isCompleted, fileNames, n_clicks):
-    print(fileNames)
-
 
     if not isCompleted:
         return 
@@ -141,7 +139,6 @@ def display_files(isCompleted, fileNames, n_clicks):
 
         if shp_file:
             shp_file = shp_file[0]
-            print(shp_file)
             try:
                 geo_df = gpd.read_file(shp_file,crs='4674')
                 geo_df = geocod_add(geo_df)
@@ -152,7 +149,6 @@ def display_files(isCompleted, fileNames, n_clicks):
 
                 dest_file = rdata_path + shp_file.split('/')[-1]
 
-                print(dest_file)
                 geo_df.to_file(dest_file,driver='ESRI Shapefile',encoding='UTF-8',index = False, crs="EPSG:4674")
                 ffiles = glob(rdata_path + '*')
 
@@ -161,7 +157,6 @@ def display_files(isCompleted, fileNames, n_clicks):
 
                 uri = glob('data/*.zip')[0]
 
-                print(uri)
 
                 return dcc.send_file('./data/r_data.zip'), dbc.Card([dbc.CardBody([html.P("Download Realizado!!!")])])
             except:
