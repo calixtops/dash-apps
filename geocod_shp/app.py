@@ -12,6 +12,7 @@ from geopy.geocoders import Nominatim
 import geocoder
 
 
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
@@ -75,16 +76,19 @@ def geocod_add(geo_df):
 
 # path = Path("/projects")
 # path.mkdir(parents=True, exist_ok=True)
-UPLOAD_FOLDER = r"data/"
+UPLOAD_FOLDER = r"raw_data/"
 du.configure_upload(app, UPLOAD_FOLDER)
 
 
 app.layout = html.Div(
     [
         html.H1('Adicionar geocodigo e municipio ao shapefile'),
+        html.Hr(),
+        html.Br(),
+
         html.Div(
             du.Upload(
-                text='Drag and Drop files here',
+                text='Solte aqui o arquivo .zip ou .rar com os arquivos do shapefile',
                 pause_button=False,
                 cancel_button=True,
                 filetypes=['zip', 'rar'],
@@ -130,13 +134,20 @@ def display_files(isCompleted, fileNames, n_clicks):
         return 
     if fileNames is not None:
 
-        folder_data = glob('data/*')[0]
-        zip_file = glob('data/*/*.zip', recursive = True)[0]
+
+        dir = 'ref_data/'
+        if os.path.exists(dir):
+            shutil.rmtree(dir)
+        os.makedirs(dir)
+
+
+        folder_data = glob('raw_data/*')[0]
+        zip_file = glob('raw_data/*/*.zip', recursive = True)[0]
 
         shutil.unpack_archive(zip_file, folder_data)
 
-        shp_file = glob('data/**/*.shp', recursive = True)
-
+        shp_file = glob('raw_data/**/*.shp', recursive = True)
+        print(shp_file)
         if shp_file:
             shp_file = shp_file[0]
             try:
@@ -144,27 +155,32 @@ def display_files(isCompleted, fileNames, n_clicks):
                 geo_df = geocod_add(geo_df)
 
 
-                rdata_path = 'data/r_data/'
-                os.mkdir(rdata_path)
-
-                dest_file = rdata_path + shp_file.split('/')[-1]
-
+                ref_data_path = 'ref_data/{}/'.format(shp_file.split('/')[-1].split('.')[0])
+                os.mkdir(ref_data_path)
+                print(ref_data_path)
+                dest_file = ref_data_path + shp_file.split('/')[-1]
+                print(dest_file)
                 geo_df.to_file(dest_file,driver='ESRI Shapefile',encoding='UTF-8',index = False, crs="EPSG:4674")
-                ffiles = glob(rdata_path + '*')
+                ffiles = glob(ref_data_path + '*')
 
                 shutil.rmtree(folder_data)
-                shutil.make_archive(rdata_path, 'zip', rdata_path)
+                shutil.make_archive(ref_data_path, 'zip', ref_data_path)
 
-                uri = glob('data/*.zip')[0]
+                uri = glob('ref_data/*.zip')[0]
+
+                dir = 'raw_data/'
+                if os.path.exists(dir):
+                    shutil.rmtree(dir)
+                os.makedirs(dir)
 
 
-                return dcc.send_file('./data/r_data.zip'), dbc.Card([dbc.CardBody([html.P("Download Realizado!!!")])])
+                return dcc.send_file(uri), dbc.Card([dbc.CardBody([html.P("Download Realizado!!!")])])
             except:
-                return dbc.Card([dbc.CardBody([html.P('Algo deu errado :/ .', style=CARD_TEXT_STYLE2)])]), html.P("Algo deu errado! :/")
+                return dbc.Card([dbc.CardBody([html.P('Algo deu errado :/ .')])]), html.P("Algo deu errado! :/")
         else:
-            return dbc.Card([dbc.CardBody([html.P('Shapefile não esta completo.', style=CARD_TEXT_STYLE2)])]), html.P("Algo deu errado! :/")
+            return dbc.Card([dbc.CardBody([html.P('Shapefile não esta completo.')])]), html.P("Algo deu errado! :/")
     else:
-        return html.P('Treta'), html.P('Treta')
+        return html.P('Algo deu errado! :/'), html.P('Algo deu errado! :/')
 
 
 
