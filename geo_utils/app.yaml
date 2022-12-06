@@ -11,6 +11,9 @@ resources:
   memory_gb: 1
   disk_size_gb: 10
 
-
+runtime_config:
+  document_root: .
+  skip_lockdown_document_root: true
+  
 entrypoint: gunicorn app:server
 

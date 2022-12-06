@@ -146,6 +146,8 @@ header = html.Div(
     Input("btn", "n_clicks"),
     [Input('upload-files-div', 'isCompleted')],
     [Input('upload-files-div', 'fileNames')],
+    prevent_initial_call=True,
+
 )
 def display_files(n_clicks, isCompleted, fileNames):
 

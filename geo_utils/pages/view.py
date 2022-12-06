@@ -116,6 +116,8 @@ header = html.Div(
 
     [Input('upload-files-div2', 'isCompleted')],
     [State('upload-files-div2', 'fileNames')],
+    prevent_initial_call=True,
+
 )
 def other(isCompleted, fileNames):
 
