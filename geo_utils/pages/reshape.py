@@ -28,10 +28,6 @@ def print_schema(shp):
 
 header = html.Div(
     [
-
-
-
-
         html.Div(children=[
             dbc.Row([
                 html.H1(children=['Reformatar o tamanho dos campos'],style = {'weight':'bold'}),
@@ -57,7 +53,6 @@ header = html.Div(
             },
         ),
 
-
     html.Div([
 
     html.P('Exemplo de como voce deve colocar o schema no input abaixo:'),
@@ -67,26 +62,16 @@ header = html.Div(
     ]),
 
 
-
     html.Div([
         "Input: ",
         dcc.Input(id = 'schema', type = 'text'),
     ]),
         
-
         html.Br(),
-        # dcc.Loading(html.Div(id = 'mensagem2')),
-
-
         html.Br(),
-
-
         html.Br(),
 
         dcc.Loading(html.Div(id = 'mensagem_reshape1')),
-
-
-
 
         dbc.Button(id='btn2',
             children=[html.I(className="fa fa-download mr-1"), "Iniciar Processo / Download"],
@@ -103,21 +88,13 @@ header = html.Div(
 
 
 @callback(
-    # Output('download', 'data'),
-    # Output('mensagem2', 'children'),
-    # Output('table', 'columns'),
-    # Output('table', 'data'),
     Output('download_reshape', 'data'),
     Output('mensagem_reshape1', 'children'),
-
-    # Output('novoscampos', 'alt_campo'),
     Input("btn2", "n_clicks"),
     Input('schema','value'),
-
     [Input('upload-files-div3', 'isCompleted')],
     [Input('upload-files-div3', 'fileNames')],
     prevent_initial_call=True,
-
 )
 def change_schema(n_clicks, schema,isCompleted, fileNames):
     if n_clicks > 0:
@@ -150,25 +127,19 @@ def change_schema(n_clicks, schema,isCompleted, fileNames):
                     dest_file = ref_data_path + shp_file.split('/')[-1]
 
 
-                    with fiona.open(shp_file, 'r') as source:
 
-                        source.schema['properties'] = schema
-
-                        kwds = source.meta
-
-                        old_schema_props = source.schema['properties']
-                        names, types = map(list, zip(*old_schema_props.items()))
-
-                        with fiona.open(dest_file, 'w', encoding='utf-8', **kwds) as destination:
+                    data_shape = gpd.read_file(shp_file,crs='4674') 
 
 
-                            for f in source:
 
-                                props = f['properties']
-                                names, values = map(list, zip(*props.items()))
-                                f['properties'] = dict(zip(names, types))
+                    b_schema = gpd.io.file.infer_schema(data_shape)
 
-                                destination.write(f)
+                    b_schema['properties'] = schema
+
+
+                    data_shape.to_file(dest_file,driver='ESRI Shapefile',
+                                        encoding='UTF-8',index = False, 
+                                        crs="EPSG:4674",schema = b_schema)
 
 
                     ffiles = glob(ref_data_path + '*')

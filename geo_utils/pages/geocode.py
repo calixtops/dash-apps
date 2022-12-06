@@ -80,7 +80,7 @@ header = html.Div(
             dbc.Row([
                 html.H1(children=['Adicionar Geocodigo e Municipio ao Shapefile'],style = {'weight':'bold'}),
                 # html.Img(src="assets/gisbanner.jpg"),
-            ], justify='center',), #style = {'background-image':'url(assets/gisbanner.jpg)', 'heigth':'100 px','padding-top' : '5%'})
+            ], justify='center',), 
         ], className = 'col-12'),
         html.Hr(),
         html.Br(),
@@ -116,23 +116,6 @@ header = html.Div(
         html.Br(),
         html.Br(),
 
-
-        # html.Div([
-
-        # dbc.Card(
-        #     [
-
-        #         dbc.CardBody(
-        #             [
-        #                 html.P('Desenvolvedor: '
-        #                         'Pedro Silveira Calixto',
-        #                          style=CARD_TEXT_STYLE),
-        #             ]
-        #         )
-        #     ]
-        # ),
-
-        # ],className = 'col-2', style = {'align-itens':'center',"display": "inline-block"}),
     ],
     style={
         'textAlign': 'center',
@@ -142,7 +125,7 @@ header = html.Div(
 @callback(
     Output('download_geocode', 'data'),
     Output('msg_geocode1', 'children'),
-
+    
     Input("btn", "n_clicks"),
     [Input('upload-files-div', 'isCompleted')],
     [Input('upload-files-div', 'fileNames')],
