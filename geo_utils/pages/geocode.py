@@ -12,9 +12,12 @@ from geopy.geocoders import Nominatim
 import geocoder
 import dash
 
-dash.register_page(__name__, title='Geocodigo', order=0)
+dash.register_page(__name__, path = '/', title='Geocodigo', order=0)
 
-
+CARD_TEXT_STYLE = {
+    'textAlign': 'center',
+    'color': '#0074D9'
+}
 
 def geocod_add(geo_df):
 
@@ -75,7 +78,7 @@ header = html.Div(
 
         html.Div(children=[
             dbc.Row([
-                html.H1(children=['Adicionar Geocodigo e Municipio ao Shapefile'],style = {'color':'black', 'weight':'bold'}),
+                html.H1(children=['Adicionar Geocodigo e Municipio ao Shapefile'],style = {'weight':'bold'}),
                 # html.Img(src="assets/gisbanner.jpg"),
             ], justify='center',), #style = {'background-image':'url(assets/gisbanner.jpg)', 'heigth':'100 px','padding-top' : '5%'})
         ], className = 'col-12'),
@@ -108,6 +111,28 @@ header = html.Div(
             className="mt-1"
         ),
         dcc.Download(id="download_geocode"),
+
+
+        html.Br(),
+        html.Br(),
+
+
+        # html.Div([
+
+        # dbc.Card(
+        #     [
+
+        #         dbc.CardBody(
+        #             [
+        #                 html.P('Desenvolvedor: '
+        #                         'Pedro Silveira Calixto',
+        #                          style=CARD_TEXT_STYLE),
+        #             ]
+        #         )
+        #     ]
+        # ),
+
+        # ],className = 'col-2', style = {'align-itens':'center',"display": "inline-block"}),
     ],
     style={
         'textAlign': 'center',
@@ -143,7 +168,6 @@ def display_files(n_clicks, isCompleted, fileNames):
             shutil.unpack_archive(zip_file, folder_data)
 
             shp_file = glob('raw_data/**/*.shp', recursive = True)
-            print(shp_file)
             if shp_file:
                 shp_file = shp_file[0]
                 try:
@@ -153,9 +177,7 @@ def display_files(n_clicks, isCompleted, fileNames):
 
                     ref_data_path = 'ref_data/{}/'.format(shp_file.split('/')[-1].split('.')[0])
                     os.mkdir(ref_data_path)
-                    print(ref_data_path)
                     dest_file = ref_data_path + shp_file.split('/')[-1]
-                    print(dest_file)
                     geo_df.to_file(dest_file,driver='ESRI Shapefile',encoding='UTF-8',index = False, crs="EPSG:4674")
                     ffiles = glob(ref_data_path + '*')
 

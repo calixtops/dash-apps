@@ -34,7 +34,7 @@ header = html.Div(
 
         html.Div(children=[
             dbc.Row([
-                html.H1(children=['Visualize a configuração dos campos do seu Shapefile'],style = {'color':'black', 'weight':'bold'}),
+                html.H1(children=['Visualize a configuração dos campos do seu Shapefile'],style = {'weight':'bold'}),
                 # html.Img(src="assets/gisbanner.jpg"),
             ], justify='center',), #style = {'background-image':'url(assets/gisbanner.jpg)', 'heigth':'100 px','padding-top' : '5%'})
         ], className = 'col-12'),
@@ -69,8 +69,8 @@ header = html.Div(
         columns=[],
         data=[],
         column_selectable="multi",
-        style_header=dict(backgroundColor="paleturquoise", textAlign = 'center'),
-        style_data=dict(backgroundColor="lavender",width='auto', textAlign = 'center'),
+        style_header=dict(textAlign = 'center'),
+        style_data=dict(width='auto', textAlign = 'center'),
 
         style_cell={'textAlign':'left'},
         style_table={
@@ -137,11 +137,9 @@ def other(isCompleted, fileNames):
 
         # ref_data_path = 'ref_data/{}/'.format(shp_file.split('/')[-1].split('.')[0])
         # os.mkdir(ref_data_path)
-        print(shp_file)
         if shp_file:
             shp_file = shp_file[0]
             geo_df = gpd.read_file(shp_file,crs='4674')
-            print(shp_file)
             a,b = print_schema(shp_file)
 
             col = b.keys()
@@ -151,7 +149,13 @@ def other(isCompleted, fileNames):
             # print(pd.DataFrame(b))
 
 
-            print(b)
+
+            dir = 'raw_data/'
+            if os.path.exists(dir):
+                shutil.rmtree(dir)
+            os.makedirs(dir)
+
+
 
         return [html.P('Configuração dos campos:'),
             [{"name": i.title(), "id": i, "deletable": False} for i in df.columns], 

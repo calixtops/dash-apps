@@ -34,7 +34,7 @@ header = html.Div(
 
         html.Div(children=[
             dbc.Row([
-                html.H1(children=['Reformatar o tamanho dos campos'],style = {'color':'black', 'weight':'bold'}),
+                html.H1(children=['Reformatar o tamanho dos campos'],style = {'weight':'bold'}),
                 # html.Img(src="assets/gisbanner.jpg"),
             ], justify='center',), #style = {'background-image':'url(assets/gisbanner.jpg)', 'heigth':'100 px','padding-top' : '5%'})
         ], className = 'col-12'),
