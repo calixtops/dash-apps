@@ -13,6 +13,7 @@ def sidebar():
                     ],
                     href=page["path"],
                     active="exact",
+                    color = 'secondary'
                 )
             )
         elif page["path"]=="/projetos":
@@ -27,4 +28,5 @@ def sidebar():
             )
     return dbc.Nav(children=nav_links,
                    vertical=True,
-                   pills=True)
+                   pills=True,
+                   color = 'secondary')

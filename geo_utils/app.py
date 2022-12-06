@@ -8,12 +8,12 @@ font_awesome = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
 meta_tags = [{"name": "viewport", "content": "width=device-width, initial-scale=1"}]
 external_stylesheets = [
     font_awesome,
-    dbc.themes.FLATLY
+    dbc.themes.LUMEN
 ]
 
-url_theme1 = dbc.themes.FLATLY
+url_theme1 = dbc.themes.LUMEN
 template_theme1 = "minty"
-url_theme2 = dbc.themes.DARKLY
+url_theme2 = dbc.themes.SOLAR
 template_theme2 = "darkly"
 
 app = dash.Dash(__name__, use_pages=True, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
@@ -36,7 +36,7 @@ row = [
                         dbc.NavLink(page["name"], href=page["path"], style = {'font-weight':'bold'}, className = 'text-primary')
                         for page in dash.page_registry.values()
                         if not page["path"].startswith("/app")
-                    ]),
+                    ],),
             ], className = 'col'),
 
 
@@ -60,15 +60,14 @@ header =dbc.Navbar(
 
         ],
         fluid=True,
-
     ),
     sticky = True,
-    dark=True,
-    className = 'bg-primary',
-    style={'border-radius': 10}
+    dark=False,
+    className = 'text-secondary bg-sucess',
+    style={'border-radius': 10},
 )
 
-app.layout = dbc.Container([header, dash.page_container], fluid=True)
+app.layout = dbc.Container([header, dash.page_container], fluid=False)
 
 
 

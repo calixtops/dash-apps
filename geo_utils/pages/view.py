@@ -82,12 +82,12 @@ header = html.Div(
         html.Br(),
         html.Br(),
 
-        dcc.Loading(html.Div(id = 'msg_view2')),
+        html.Div(id = 'msg_view2'),
 
         
         html.Br(),
 
-        dcc.Loading(html.Div(id = 'msg_view3')),
+        html.Div(id = 'msg_view3'),
 
 
 
