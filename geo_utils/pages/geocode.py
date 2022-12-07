@@ -75,6 +75,8 @@ def geocod_add(geo_df):
 
 header = html.Div(
     [
+        html.Br(),
+        html.Br(),
 
         html.Div(children=[
             dbc.Row([
@@ -95,7 +97,6 @@ header = html.Div(
             ),
             style={
                 'textAlign': 'center',
-                'width': '600px',
                 'padding': '10px',
                 'display': 'inline-block'
             },

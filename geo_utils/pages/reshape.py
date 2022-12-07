@@ -28,6 +28,9 @@ def print_schema(shp):
 
 header = html.Div(
     [
+        html.Br(),
+        html.Br(),
+
         html.Div(children=[
             dbc.Row([
                 html.H1(children=['Reformatar o tamanho dos campos'],style = {'weight':'bold'}),
@@ -47,7 +50,6 @@ header = html.Div(
             ),
             style={
                 'textAlign': 'center',
-                'width': '600px',
                 'padding': '10px',
                 'display': 'inline-block'
             },

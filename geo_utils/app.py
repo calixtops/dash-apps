@@ -13,7 +13,7 @@ external_stylesheets = [
 
 url_theme1 = dbc.themes.LUMEN
 template_theme1 = "minty"
-url_theme2 = dbc.themes.SOLAR
+url_theme2 = dbc.themes.SLATE
 template_theme2 = "darkly"
 
 app = dash.Dash(__name__, use_pages=True, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
@@ -63,7 +63,7 @@ header =dbc.Navbar(
     ),
     sticky = True,
     dark=False,
-    className = 'text-secondary bg-sucess',
+    className = 'text-secondary bg-primary',
     style={'border-radius': 10},
 )
 

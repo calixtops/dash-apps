@@ -29,14 +29,14 @@ def print_schema(shp):
 header = html.Div(
     [
 
-
-
+        html.Br(),
+        html.Br(),
 
         html.Div(children=[
             dbc.Row([
                 html.H1(children=['Visualize a configuração dos campos do seu Shapefile'],style = {'weight':'bold'}),
                 # html.Img(src="assets/gisbanner.jpg"),
-            ], justify='center',), #style = {'background-image':'url(assets/gisbanner.jpg)', 'heigth':'100 px','padding-top' : '5%'})
+            ], justify='center',), 
         ], className = 'col-12'),
         html.Hr(),
         html.Br(),
@@ -51,7 +51,6 @@ header = html.Div(
             ),
             style={
                 'textAlign': 'center',
-                'width': '600px',
                 'padding': '10px',
                 'display': 'inline-block'
             },
@@ -88,31 +87,17 @@ header = html.Div(
         html.Br(),
 
         html.Div(id = 'msg_view3'),
-
-
-
-
-        # dcc.Download(id="download"),
-        # dbc.Button(id='btn',
-        #     children=[html.I(className="fa fa-download mr-1"), "Iniciar Processo / Download"],
-        #     color="info",
-        #     className="mt-1"
-        # ),
-
     ],
     style={
         'textAlign': 'center',
     },
 )
 @callback(
-    # Output('download', 'data'),
     Output('msg_view1', 'children'),
     Output('table', 'columns'),
     Output('table', 'data'),
     Output('msg_view2', 'children'),
     Output('msg_view3', 'children'),
-
-    # Output('novoscampos', 'alt_campo'),
 
     [Input('upload-files-div2', 'isCompleted')],
     [State('upload-files-div2', 'fileNames')],
@@ -137,8 +122,6 @@ def other(isCompleted, fileNames):
 
         shp_file = glob('raw_data/**/*.shp', recursive = True)
 
-        # ref_data_path = 'ref_data/{}/'.format(shp_file.split('/')[-1].split('.')[0])
-        # os.mkdir(ref_data_path)
         if shp_file:
             shp_file = shp_file[0]
             geo_df = gpd.read_file(shp_file,crs='4674')
@@ -148,16 +131,10 @@ def other(isCompleted, fileNames):
 
             df = pd.DataFrame(zip(list(b.keys()),list(b.values())), columns = ['Campo','Tipo:Tamanho'])
 
-            # print(pd.DataFrame(b))
-
-
-
             dir = 'raw_data/'
             if os.path.exists(dir):
                 shutil.rmtree(dir)
             os.makedirs(dir)
-
-
 
         return [html.P('Configuração dos campos:'),
             [{"name": i.title(), "id": i, "deletable": False} for i in df.columns], 
