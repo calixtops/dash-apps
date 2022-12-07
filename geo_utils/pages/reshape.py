@@ -66,7 +66,7 @@ header = html.Div(
 
     html.Div([
         "Input: ",
-        dcc.Input(id = 'schema', type = 'text'),
+        dcc.Input(id = 'schema', type = 'text', style = {'width': '75%'}),
     ]),
         
         html.Br(),
