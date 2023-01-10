@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:166f69adc18a669077e3b1e68a5cb8c38df1457a2f0aca67b5341007dc0a7003
-size 103
+dash==2.6.2
+dash_bootstrap_components==1.2.1
+geopy==2.2.0
+numpy==1.21.6
+pandas
+plotly==5.10.0
+gunicorn
